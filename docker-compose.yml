@@ -1,0 +1,13 @@
+postgres0:
+  image: postgres:9.5.4
+  ports:
+    - 5432:5432
+rails:
+  build: .
+  ports:
+    - 3000:3000
+  volumes:
+    - /docker-shared:/usr/src/docker-rails-test
+  links:
+    - postgres0:postgres0
+  tty: true
